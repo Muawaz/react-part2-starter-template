@@ -14,16 +14,16 @@ const TodoList = () => {
     axios
       .get<Todo[]>("https://jsonplaceholder.typicode.com/todos")
       .then((res) => res.data);
-      
+
   // Auto Retries
   // Auto Refetch
   // Caching
-  const { data: todos, error:  } = useQuery({
+  const { data: todos, error } = useQuery<Todo[], Error>({
     queryKey: ["todos"],
     queryFn: fetchtodos,
   });
 
-  // if (error) return <p>{error}</p>;
+  if (error) return <p>{error.message}</p>;
 
   return (
     <ul className="list-group">
