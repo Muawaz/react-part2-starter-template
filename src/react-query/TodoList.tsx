@@ -18,10 +18,16 @@ const TodoList = () => {
   // Auto Retries
   // Auto Refetch
   // Caching
-  const { data: todos, error } = useQuery<Todo[], Error>({
+  const {
+    data: todos,
+    error,
+    isLoading,
+  } = useQuery<Todo[], Error>({
     queryKey: ["todos"],
     queryFn: fetchtodos,
   });
+
+  if (isLoading) return <p>Loading...</p>;
 
   if (error) return <p>{error.message}</p>;
 
