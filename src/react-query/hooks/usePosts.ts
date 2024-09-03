@@ -6,20 +6,20 @@ interface Post {
     title: string;
     body: string;
     userId: number;
-  }
-
-const usePosts = () => {
-    const fetchPosts = () =>
-        axios
-          .get("https://jsonplaceholder.typicode.com/posts")
-          .then((res) => res.data);
-
-    
-return useQuery<Post[], Error>({
-    queryKey: ["Post"],
-    queryFn: fetchPosts,
-  });
-
 }
+
+
+const usePosts = (userId: number | undefined) => useQuery<Post[], Error>({
+  // user/1/posts
+    queryKey: userId ? ["users", userId, 'posts'] : ['posts'],
+    queryFn: () => axios
+        .get("https://jsonplaceholder.typicode.com/posts", {
+          params: {
+            userId
+          }
+        })
+        .then((res) => res.data),
+    staleTime: 1 * 60 * 1000, //1m
+  });
 
 export default usePosts
