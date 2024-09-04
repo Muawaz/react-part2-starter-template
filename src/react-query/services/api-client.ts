@@ -6,13 +6,6 @@ const axiosInstance = axios.create({
 
 // export default axiosInstance;
 
-export interface Todo {
-  id: number;
-  title: string;
-  userId: number;
-  completed: boolean;
-}
-
 class APIClient<T> {
     endpoint: string;
 
