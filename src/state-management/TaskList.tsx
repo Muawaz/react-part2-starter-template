@@ -3,7 +3,7 @@ import taskReducer from "./reducers/taskReducer";
 import TasksContext from "./contexts/tasksContext";
 
 const TaskList = () => {
-  const { tasks, dispatch } = useContext(TasksContext);
+  const { tasks, tasksDispatch: dispatch } = useContext(TasksContext);
 
   return (
     <>
