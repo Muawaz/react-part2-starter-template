@@ -1,16 +1,16 @@
 import { useLocation, useParams, useSearchParams } from "react-router-dom";
 
-const UserDetailPage = () => {
+const UserDetail = () => {
   const params = useParams();
-  // console.log("useParams-Hook : ", params);
+  console.log("useParams-Hook : ", params);
   const [searchParams, setSearchParams] = useSearchParams();
   // console.log("useSearchParams-Hook : ", searchParams);
   // console.log("useSearchParams.toString()-Hook : ", searchParams.toString());
-  console.log("useSearchParams.get()-Hook : ", searchParams.get("name"));
+  // console.log("useSearchParams.get()-Hook : ", searchParams.get("id"));
   const location = useLocation();
   console.log("location-Hook : ", location);
 
-  return <p>User</p>;
+  return <p>User {params.id}</p>;
 };
 
-export default UserDetailPage;
+export default UserDetail;
